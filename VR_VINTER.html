@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <title>Vinterträff VäxtRåd – Framtidens växtodlingsbrev</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Vinterträff med VäxtRåd 16–17 december: workshop, data, rådgivning, Framtidsgården Bjertorp och jullunch." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-page: #f4f7fb;
+      --bg-card: #ffffff;
+      --accent: #1e9f4b;
+      --text-main: #1f2933;
+      --text-muted: #6b7280;
+      --border-subtle: #e2e8f0;
+      --radius-xl: 26px;
+      --transition-fast: 0.2s ease-out;
+    }
+    * { box-sizing: border-box; margin:0; padding:0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Poppins", sans-serif;
+      background: var(--bg-page);
+      color: var(--text-main);
+      line-height:1.5;
+    }
+    img { max-width:100%; display:block; }
+    a { color:inherit; text-decoration:none; }
+
+    /* NAV */
+    nav {
+      position: fixed; width:100%; background: var(--bg-card);
+      box-shadow:0 2px 4px rgba(0,0,0,0.1); z-index:1000;
+    }
+    .nav-container { max-width:1100px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; padding:12px 20px; }
+    .nav-brand { font-weight:600; color: var(--accent); display:flex; align-items:center; gap:10px; }
+    .nav-brand img { height:32px; }
+    .nav-menu { display:flex; gap:18px; }
+    .nav-menu a { font-weight:500; }
+    .hamburger { display:none; flex-direction:column; gap:4px; cursor:pointer; }
+    .hamburger span { width:24px; height:2px; background: var(--text-main); }
+    @media (max-width:768px) {
+      .nav-menu { display:none; flex-direction:column; gap:12px; background: var(--bg-card); position:absolute; top:56px; right:20px; padding:12px; border:1px solid var(--border-subtle); border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1); }
+      .nav-menu.show { display:flex; }
+      .hamburger { display:flex; }
+    }
+
+    .page { max-width:1100px; margin:0 auto; padding:90px 20px 70px; }
+
+    /* HERO */
+    .hero {
+      position:relative; border-radius: var(--radius-xl); padding:40px 26px 26px;
+      background:#ffffff; box-shadow:0 12px 30px rgba(15,23,42,0.12);
+      margin-top:60px; overflow:hidden;
+    }
+    .hero-grid { display:grid; grid-template-columns: minmax(0,2.5fr) minmax(0,2fr); gap:28px; }
+    .hero-photo { border-radius:22px; overflow:hidden;
+      background:url("https://hebbkx1anhila5yf.public.blob.vercel-storage.com/vaxtrad-YqUc8WVm7qIpuepaslIILnUyM3Nw3W.png?auto=compress&cs=tinysrgb&w=1200") center/cover no-repeat;
+      min-height:260px; transition:transform .4s ease-out; }
+    .hero-photo:hover { transform:scale(1.02); }
+
+    .hero-kicker { display:inline-flex; align-items:center; gap:8px; padding:4px 11px; border-radius:999px; background:#e4f7eb; color: var(--accent); font-size:12px; letter-spacing:0.08em; margin-bottom:10px; text-transform:uppercase; }
+    .hero-title { font-size:clamp(28px,3.5vw,38px); font-weight:700; margin-bottom:14px; }
+    .hero-subtitle { font-size:16px; color: var(--text-muted); max-width:520px; margin-bottom:20px; }
+
+    .hero-meta { display:flex; flex-wrap:wrap; gap:12px; }
+    .hero-pill {
+      padding:8px 14px; border-radius:999px; background:#f9fafb;
+      border:1px solid var(--border-subtle); font-size:14px;
+      display:flex; align-items:center; gap:6px;
+    }
+
+    .icon-inline {
+      width:18px; height:18px; stroke:var(--accent); flex-shrink:0;
+    }
+
+    .hero-link-row { margin-top:24px; display:flex; flex-wrap:wrap; gap:10px; }
+    .hero-link { padding:8px 14px; border-radius:999px; background:transparent; border:1px dashed #d1d5db; font-size:14px; transition:0.2s; }
+    .hero-link:hover { background:white; border-color:#c8ebd5; transform:translateY(-1px); }
+
+    @media (max-width:960px) {
+      .hero-grid { grid-template-columns:1fr; }
+      .hero { padding:26px; }
+      .hero-photo { min-height:200px; }
+    }
+
+    /* SECTIONS */
+    .section { margin-top:40px; }
+    .section-title { font-size:22px; font-weight:600; margin-bottom:6px; }
+    .section-subtitle { font-size:14px; color: var(--text-muted); margin-bottom:20px; }
+
+    /* HIGHLIGHTS */
+    .highlights-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:18px; }
+    .highlight { background:white; padding:14px; border-radius: var(--radius-xl); border:1px solid var(--border-subtle); box-shadow:0 12px 30px rgba(15,23,42,0.12); transition:transform 0.2s; }
+
+    .highlight:hover { transform:translateY(-4px); }
+    .highlight-tag { font-size:11px; text-transform:uppercase; letter-spacing:0.12em; color:#9ca3af; margin-bottom:4px; }
+    .highlight-title { font-size:16px; font-weight:600; margin-bottom:6px; }
+    .highlight-text { font-size:13px; color:var(--text-muted); }
+
+    /* AGENDA */
+    .agenda-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:20px; }
+    .agenda-day { background:white; padding:18px; border-radius: var(--radius-xl); border:1px solid var(--border-subtle); box-shadow:0 12px 30px rgba(15,23,42,0.12); }
+    .agenda-day-title { font-size:18px; font-weight:600; margin-bottom:8px; }
+    .agenda-item { display:flex; gap:12px; padding:10px 0; border-bottom:1px solid #e2e8f0; }
+    .agenda-time { width:60px; font-size:14px; font-weight:600; color:var(--accent); }
+    .agenda-content-title { font-size:14px; font-weight:500; }
+    .agenda-content-meta { font-size:13px; color:var(--text-muted); }
+
+    /* SPEAKERS */
+    .speakers-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr)); gap:22px; }
+    .speaker-card {
+      background:white; border:1px solid var(--border-subtle); border-radius: var(--radius-xl);
+      box-shadow:0 12px 30px rgba(15,23,42,0.12);
+      overflow:hidden; transition:0.25s; cursor:pointer;
+    }
+    .speaker-card:hover { transform:translateY(-8px); box-shadow:0 18px 38px rgba(15,23,42,0.22); }
+    .speaker-photo img { width:100%; height:auto; }
+    .speaker-info { padding:16px; }
+    .speaker-info-name { font-size:16px; font-weight:600; margin-bottom:4px; }
+    .speaker-info-role { font-size:13px; color:var(--text-muted); margin-bottom:8px; }
+    .speaker-session { font-size:12px; color:var(--accent); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:6px; }
+    .speaker-body { font-size:13px; color:var(--text-muted); }
+
+    /* PLACES */
+    .places-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:18px; }
+    .place-card { background:white; border-radius: var(--radius-xl); overflow:hidden; border:1px solid var(--border-subtle); box-shadow:0 12px 30px rgba(15,23,42,0.12); }
+    .place-map { width:100%; height:160px; border:0; }
+    .place-body { padding:12px; }
+    .place-name { font-size:14px; font-weight:600; }
+    .place-location { font-size:12px; color:var(--text-muted); margin-bottom:8px; }
+    .place-links a { padding:5px 10px; background:#f9fafb; border-radius:999px; border:1px solid #d1d5db; font-size:12px; display:inline-block; margin-right:6px; }
+
+    /* PARALLAX */
+    .parallax { position:relative; background-size:cover; background-position:center; background-attachment:fixed; padding:120px 20px; text-align:center; color:white; margin-top:40px; border-radius: var(--radius-xl); overflow:hidden; }
+
+    .parallax-overlay { position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.45); }
+    .parallax-content { position:relative; z-index:1; max-width:700px; margin:0 auto; }
+    .parallax-title { font-size:clamp(30px,4vw,44px); font-weight:700; margin-bottom:10px; }
+    .parallax-subtitle { font-size:18px; opacity:0.95; }
+
+    /* PRAKTISKT */
+    .practical { background:white; padding:20px; border-radius: var(--radius-xl); border:1px solid var(--border-subtle); box-shadow:0 12px 30px rgba(15,23,42,0.12); }
+    .practical-list { list-style:none; font-size:14px; }
+    .practical-list li { margin-bottom:6px; }
+
+    /* FOOTER */
+    .footer { margin-top:40px; text-align:center; font-size:12px; color:var(--text-muted); }
+
+  </style>
+</head>
+
+<body>
+
+<nav>
+  <div class="nav-container">
+    <div class="nav-brand">
+      <img src="https://www.lantmannenlantbrukmaskin.se/contentassets/5c4e622825fe492093aa0af0cfc422c7/vaxtrad_logotype_.png?width=1000&height=1000&rmode=min" alt="VäxtRåd logotyp">
+      Vinterträff
+    </div>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    <div class="nav-menu" id="navMenu">
+      <a href="#agenda">Agenda</a>
+      <a href="#medverkande">Medverkande</a>
+      <a href="#platser">Platser</a>
+    </div>
+  </div>
+</nav>
+
+<main class="page">
+
+  <!-- HERO -->
+  <section class="hero" data-aos="fade-up">
+    <div class="hero-grid">
+      <div class="hero-main">
+        <div class="hero-kicker"><span></span>Vinterträff VäxtRåd 2025</div>
+        <h1 class="hero-title">Framtidens växtodlingsbrev – för nutidens kunder</h1>
+        <p class="hero-subtitle">Två dagar för att utveckla innehåll, struktur, process och rådgivning – på riktigt.</p>
+
+        <div class="hero-meta">
+          <!-- Kalender -->
+          <div class="hero-pill">
+            <svg class="icon-inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke-width="2"/>
+              <line x1="16" y1="2" x2="16" y2="6" stroke-width="2"/>
+              <line x1="8" y1="2" x2="8" y2="6" stroke-width="2"/>
+              <line x1="3" y1="10" x2="21" y2="10" stroke-width="2"/>
+            </svg>
+            16–17 december
+          </div>
+
+          <!-- Plats -->
+          <div class="hero-pill">
+            <svg class="icon-inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <path stroke-width="2" d="M12 2C8 2 5 5 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-4-3-7-7-7Z"/>
+
+              <circle cx="12" cy="9" r="2.5" fill="var(--accent)"/>
+
+            </svg>
+            Hedåker · Bjertorp · Lumber & Karle
+          </div>
+
+          <!-- Team -->
+          <div class="hero-pill">
+            <svg class="icon-inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <path stroke-width="2" d="M17 21v-2a4 4 0 0 0-3-3.9M7 21v-2a4 4 0 0 1 3-3.9m5-4.1a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm-8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm4-2a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
+            </svg>
+            Team VäxtRåd
+          </div>
+        </div>
+
+        <div class="hero-link-row">
+          <a href="#agenda" class="hero-link">↓ Se agenda</a>
+          <a href="#platser" class="hero-link">🗺️ Kolla platserna</a>
+          <a href="#medverkande" class="hero-link">⭐ Medverkande</a>
+        </div>
+      </div>
+
+      <div class="hero-photo"></div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section class="section" data-aos="fade-up" data-aos-delay="150">
+    <h2 class="section-title">Vad vi ska göra</h2>
+    <p class="section-subtitle">Verktyg – Innehåll – Process – Mål</p>
+
+    <div class="highlights-grid">
+      <div class="highlight">
+        <div class="highlight-tag">Dag 1 – Studiebesök</div>
+        <h3 class="highlight-title">Inspiration från rådgivning & data</h3>
+        <p class="highlight-text">Hur digitalt beslutstöd och rådgivarens vardag formar framtidens arbetssätt.</p>
+      </div>
+
+      <div class="highlight">
+        <div class="highlight-tag">Workshop</div>
+        <h3 class="highlight-title">Bygg arbetsflödet</h3>
+        <p class="highlight-text">Tillsammans skapar vi struktur, format och ansvarsfördelning.</p>
+      </div>
+
+      <div class="highlight">
+        <div class="highlight-tag">Dag 2 – Strategi</div>
+        <h3 class="highlight-title">Framtidsgården Bjertorp + workshop</h3>
+        <p class="highlight-text">Teknik, hållbarhet och rådgivning i praktiken – vad kräver framtiden?</p>
+      </div>
+
+      <div class="highlight">
+        <div class="highlight-tag">Avslut</div>
+        <h3 class="highlight-title">Jullunch på Lumber & Karle</h3>
+        <p class="highlight-text">God mat, reflektion och gemensamt avslut inför 2025.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AGENDA -->
+  <section id="agenda" class="section" data-aos="fade-up">
+    <h2 class="section-title">Agenda</h2>
+    <p class="section-subtitle">Vår gemensamma tvådagarsplan</p>
+
+    <div class="agenda-grid">
+      <!-- Tisdag -->
+      <div class="agenda-day">
+        <h3 class="agenda-day-title">Tisdag 16/12</h3>
+
+        <div class="agenda-item"><div class="agenda-time">10:30</div><div><div class="agenda-content-title">Rundvandring hos Dataväxt</div><div class="agenda-content-meta">Studiebesök & inblick i vardagen.</div></div></div>
+        <div class="agenda-item"><div class="agenda-time">11:15</div><div><div class="agenda-content-title">Affär & vision</div><div class="agenda-content-meta">Fredrik, Jens & Per.</div></div></div>
+        <div class="agenda-item"><div class="agenda-time">12:15</div><div><div class="agenda-content-title">Lunch</div><div class="agenda-content-meta">Gemensam reflektion.</div></div></div>
+        <div class="agenda-item"><div class="agenda-time">13:00</div><div><div class="agenda-content-title">Workshopstart</div><div class="agenda-content-meta">Anders leder arbetet.</div></div></div>
+        <div class="agenda-item"><div class="agenda-time">15:00</div><div><div class="agenda-content-title">Fika</div><div class="agenda-content-meta">Paus & reflektion.</div></div></div>
+        <div class="agenda-item"><div class="agenda-time">15:30</div><div><div class="agenda-content-title">Grupparbete</div><div class="agenda-content-meta">Struktur, format, arbetsflöde.</div></div></div>
+        <div class="agenda-item"><div class="agenda-time">17:30</div><div><div class="agenda-content-title">Avslut dag 1</div><div class="agenda-content-meta">Boende Lidköping.</div></div></div>
+      </div>
+
+      <!-- Onsdag -->
+      <div class="agenda-day">
+        <h3 class="agenda-day-title">Onsdag 17/12</h3>
+
+        <div class="agenda-item"><div class="agenda-time">08:00</div><div><div class="agenda-content-title">Framtidsgården Bjertorp</div><div class="agenda-content-meta">Kjell guidar på gården.</div></div></div>
+        <div class="agenda-item"><div class="agenda-time">08:30</div><div><div class="agenda-content-title">Fördjupad workshop</div><div class="agenda-content-meta">Blueprint i praktiken.</div></div></div>
+        <div class="agenda-item"><div class="agenda-time">12:15</div><div><div class="agenda-content-title">Transport</div><div class="agenda-content-meta">Till Lumber & Karle.</div></div></div>
+        <div class="agenda-item"><div class="agenda-time">13:00</div><div><div class="agenda-content-title">Jullunch</div><div class="agenda-content-meta">Reflektion & nästa steg.</div></div></div>
+        <div class="agenda-item"><div class="agenda-time">15:00</div><div><div class="agenda-content-title">Avslut</div><div class="agenda-content-meta">Hemfärd.</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEDVERKANDE -->
+  <section id="medverkande" class="section" data-aos="fade-up">
+    <h2 class="section-title">Medverkande</h2>
+    <p class="section-subtitle">Profiler som hjälper oss tänka större kring växtodling & rådgivning.</p>
+
+    <div class="speakers-grid">
+
+      <article class="speaker-card">
+        <div class="speaker-photo"><img src="https://datavaxt.com/wp-content/uploads/2019/12/Datavaxt-Fredrik-Djupmarker-1200.jpg"></div>
+        <div class="speaker-info">
+          <div class="speaker-info-name">Fredrik Djupmarker</div>
+          <div class="speaker-info-role">VD, Dataväxt</div>
+          <div class="speaker-session">Data & rådgivning</div>
+          <p class="speaker-body">Visar hur digitalt stöd och rådgivning samspelar i utvecklingen framåt.</p>
+        </div>
+      </article>
+
+      <article class="speaker-card">
+        <div class="speaker-photo"><img src="https://datavaxt.com/wp-content/uploads/2023/06/Jens-Juul-med-nya-appen.jpg"></div>
+        <div class="speaker-info">
+          <div class="speaker-info-name">Jens Juul</div>
+          <div class="speaker-info-role">Produktägare, Dataväxt</div>
+          <div class="speaker-session">Digitala produkter</div>
+          <p class="speaker-body">Går igenom hur våra digitala verktyg effektiviserar rådgivningen.</p>
+        </div>
+      </article>
+
+      <article class="speaker-card">
+        <div class="speaker-photo"><img src="https://datavaxt.com/wp-content/uploads/2019/12/per-zetterqvist1200-1.jpg"></div>
+        <div class="speaker-info">
+          <div class="speaker-info-name">Per Zetterqvist</div>
+          <div class="speaker-info-role">Försäljningschef</div>
+          <div class="speaker-session">Kund & lantbrukare</div>
+          <p class="speaker-body">Fokuserar på kundnytta och hur vi speglar den i vårt rådgivningsarbete.</p>
+        </div>
+      </article>
+
+      <article class="speaker-card">
+        <div class="speaker-photo"><img src="https://mnd-assets.mynewsdesk.com/image/upload/f_auto,t_limit_1000/iolsqk0j3bzze9xe3lejiq"></div>
+        <div class="speaker-info">
+          <div class="speaker-info-name">Anders Lindgren</div>
+          <div class="speaker-info-role">R&D, Lantmännen</div>
+          <div class="speaker-session">Workshopledning</div>
+          <p class="speaker-body">Driver processen från idé till konkreta arbetssätt och ansvarsfördelning.</p>
+        </div>
+      </article>
+
+      <article class="speaker-card">
+        <div class="speaker-photo"><img src="https://www.lantmannenlantbrukmaskin.se/contentassets/b5ef5fad0ed34113877855a677b026d4/kjell-carlsson.jpg?maxwidth=500"></div>
+        <div class="speaker-info">
+          <div class="speaker-info-name">Kjell Carlsson</div>
+          <div class="speaker-info-role">Driftsledare, Bjertorp</div>
+          <div class="speaker-session">Framtidsgården</div>
+          <p class="speaker-body">Visar verksamheten och berättar om framtidsarbetet på Bjertorp.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- PLATSER -->
+  <section id="platser" class="section" data-aos="fade-up">
+    <h2 class="section-title">Platser</h2>
+    <p class="section-subtitle">Miljöerna vi arbetar i.</p>
+
+    <div class="places-grid">
+      <div class="place-card">
+        <iframe class="place-map" src="https://www.google.com/maps?q=Hyringa+Hed%C3%A5kers+S%C3%A4teri+3,+467+95+Gr%C3%A4storp&output=embed"></iframe>
+        <div class="place-body">
+          <div class="place-name">Dataväxt, Hedåkers säteri</div>
+          <div class="place-location">Hyringa Hedåkers Säteri 3, Grästorp</div>
+          <div class="place-links">
+            <a href="https://datavaxt.com/" target="_blank">datavaxt.com</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Hyringa+Hed%C3%A5kers+S%C3%A4teri+3,+467+95+Gr%C3%A4storp" target="_blank">Visa karta</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <iframe class="place-map" src="https://www.google.com/maps?q=Framtidsg%C3%A5rden+Bjertorp,+Kv%C3%A4num&output=embed"></iframe>
+        <div class="place-body">
+          <div class="place-name">Framtidsgården Bjertorp</div>
+          <div class="place-location">Fyrunga, Kvänum</div>
+          <div class="place-links">
+            <a href="https://www.lantmannenlantbrukmaskin.se/om-oss/hallbarhet-och-innovation/framtidsgardar/" target="_blank">Läs mer</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Framtidsg%C3%A5rden+Bjertorp" target="_blank">Visa karta</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <iframe class="place-map" src="https://www.google.com/maps?q=Lumber+%26+Karle,+Kv%C3%A4num&output=embed"></iframe>
+        <div class="place-body">
+          <div class="place-name">Lumber & Karle</div>
+          <div class="place-location">Storgatan 1, Kvänum</div>
+          <div class="place-links">
+            <a href="https://www.lumberkarle.se/lunchjulbord" target="_blank">Lunchjulbord</a>
+            <a href="https://www.lumberkarle.se" target="_blank">Hemsida</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOENDE -->
+  <section class="parallax" style="background-image:url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1d/40/05/34/stadshotellet.jpg?w=1400&h=800&s=1');" data-aos="fade-up">
+    <div class="parallax-overlay"></div>
+    <div class="parallax-content">
+      <h2 class="parallax-title">Boende – Stadshotellet i Lidköping</h2>
+      <p class="parallax-subtitle">Anrikt hotell med riktigt bra frukostbuffé, centralt läge och skön start på dag 2.</p>
+    </div>
+  </section>
+
+  <!-- PRAKTISKT -->
+  <section class="section" data-aos="fade-up">
+    <div class="practical">
+      <h2 class="section-title">Praktiskt att veta</h2>
+      <ul class="practical-list">
+        <li><strong>Tider:</strong> 10:30 tisdag → 15:00 onsdag</li>
+        <li><strong>Boende:</strong> Stadshotellet i Lidköping, enkelrum</li>
+        <li><strong>Klädsel:</strong> Smart‑casual</li>
+        <li><strong>Förbered:</strong> Ta med exempel på bra och mindre bra brev. Undersök vad konkurrenter gör och ta med goda respektive svaga exempel.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- JULLUNCH -->
+  <section class="parallax" style="background-image:url('https://eu-central-1.linodeobjects.com/tasteline/2019/11/julbordsrecept-samlingsbild-foto-nurlan-emir-mathem.jpg');" data-aos="fade-up">
+    <div class="parallax-overlay"></div>
+    <div class="parallax-content">
+      <h2 class="parallax-title">Jullunch på Lumber & Karle</h2>
+      <p class="parallax-subtitle">Ett värdigt avslut – gemenskap, god mat och våra gemensamma nästa steg.</p>
+    </div>
+  </section>
+
+  <footer class="footer" data-aos="fade-up">
+    Vinterträff VäxtRåd · 16–17 december · Intern träff
+  </footer>
+
+</main>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 800, once: true });
+  document.getElementById('hamburger').onclick = () =>
+    document.getElementById('navMenu').classList.toggle('show');
+</script>
+
+</body>
+</html>
